@@ -1,0 +1,21 @@
+
+
+{{updateLinks()}}
+
+<nav>  
+    <b [hidden]="auth_token">
+        <a routerLink="/register" routerLinkActive="active">Register</a> |
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+    </b>
+    <b *ngIf='auth_token'>
+        <a routerLink="/" routerLinkActive="active" (click)='logout()'>Logout ({{username}})</a>
+    </b>
+    <br>
+    <a routerLink="/main" routerLinkActive="active">Tasks</a> |
+    <a routerLink="/done" routerLinkActive="active">Done</a> |
+    <a routerLink="/new" routerLinkActive="active">New Task</a>
+  </nav>
+    
+
+
+<router-outlet></router-outlet>

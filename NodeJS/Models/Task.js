@@ -1,0 +1,27 @@
+var mongoose              = require('mongoose');
+
+var taskSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        index: true
+    },
+    deadline: {
+        type: Date,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    complete: {
+        type: Boolean,
+        required: true
+    },
+    color: {
+        type: String,
+    }
+});
+
+var Task = module.exports = mongoose.model('Task', taskSchema, 'tasks');
+module.exports = Task;
