@@ -1,7 +1,8 @@
 const Task = require('../Models/Task');
-const RequestService = require('../Services/RequestService');
 const TaskRepo = require('../Data/TaskRepo');
 const _taskRepo = new TaskRepo();
+const UserRepo       = require('../Data/UserRepo');
+const _userRepo      = new UserRepo();
 
 
 exports.CreateNewTask = async function (req, res) {
@@ -10,47 +11,49 @@ exports.CreateNewTask = async function (req, res) {
         'deadline': req.body.deadline,
         'description': req.body.description,
         'complete': false,
-        'color': null
+        'color': null,
+        'user': req.body.username
     })
-    let responseObj = await _taskRepo.create(tempTaskObj);
-    let allTasks = await _taskRepo.allTasks();
+    let responseObj = await _taskRepo.create(tempTaskObj);    
+
     if (responseObj.errorMessage == '') {
         res.json({
-            tasks: allTasks,
             errorMessage: ''
         });
     }
     else {
         res.json({
-            tasks: allTasks,
             errorMessage: responseObj.errorMessage
         });
     }
 }
 
 exports.Delete = async function (req, res) {
-    let taskID =  req.body._id;
+    let taskID =  req.body.task._id;
+    let username = req.body.username;
     let deleteTask = await _taskRepo.delete(taskID);
-    let allTasks = await _taskRepo.allTasks();
+    let allTasks = await _taskRepo.allTasks(username);
 
     res.json({ allTasks: allTasks })
 
 }
 
 exports.Complete = async function (req, res) {
-    let taskID =  req.body._id;
+    let taskID =  req.body.task._id;
+    let username = req.body.username;
     let updating = {complete: true};
     let completeTask = await _taskRepo.update(taskID, updating);
-    let allTasks = await _taskRepo.allTasks();
+    let allTasks = await _taskRepo.allTasks(username);
     res.json({ allTasks: allTasks })
 
 }
 
 exports.Highlight = async function (req, res) {
-    let taskID =  req.body._id;
+    let taskID =  req.body.task._id;
+    let username = req.body.username;
     let updating = {color: "red"};
     let highlightTask = await _taskRepo.update(taskID, updating);
-    let allTasks = await _taskRepo.allTasks();
+    let allTasks = await _taskRepo.allTasks(username);
     res.json({ allTasks: allTasks })
 
 }

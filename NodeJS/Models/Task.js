@@ -20,6 +20,10 @@ var taskSchema = mongoose.Schema({
     },
     color: {
         type: String,
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

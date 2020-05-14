@@ -36,9 +36,15 @@ class TaskRepo {
     }
 
 
-    async allTasks() {
+    async allTasks(username) {
+        let userTasks = [];
         let allTasks = await Task.find().exec();
-        return allTasks;
+        for(let i=0; i<allTasks.length; i++) {
+            if(allTasks[i].user == username) {
+                userTasks.push(allTasks[i])
+            }
+        }
+        return userTasks;
     }
 
 

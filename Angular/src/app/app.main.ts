@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
     templateUrl: './app.main.html'
 })
 export class MainComponent {
+    username: String;
     _allTasksArray: Array<any>;
     _sortedTasksArray: Array<any>;
     _overdueTasksArray: Array<any> = [];
@@ -22,11 +23,18 @@ export class MainComponent {
 
     constructor(private http: HttpClient) {
         this._http = http;
+        this.updateLinks()
         this.getTasks();
         this._today = new Date();
         this._todayTime = this.getTime(this._today)
         this._today = this.formatTaskDeadline(this._today);
 
+    }
+
+    updateLinks() {         
+        if(sessionStorage.getItem('username')) {
+            this.username = sessionStorage.getItem('username')
+        }
     }
 
     formatTaskDeadline(_date) {
@@ -52,7 +60,8 @@ export class MainComponent {
 
     getTasks() {
         let url = 'http://localhost:1337/toDoTasks';
-        this._http.get<any>(url)
+
+        this._http.post<any>(url, {username:this.username})
         .subscribe(result => {
             this._allTasksArray = result.toDoTasks;
             console.log(this._allTasksArray)
@@ -95,7 +104,8 @@ export class MainComponent {
     deleteTask() {
         let url = "http://localhost:1337/deleteTask";
 
-        this.http.post(url,this.selectedTask)
+        this.http.post(url,{task:this.selectedTask,
+                            username:this.username})
             .subscribe(
                 (data) => {
                     // console.log(data)
@@ -110,7 +120,8 @@ export class MainComponent {
     completeTask() {
         let url = "http://localhost:1337/completeTask";
 
-        this.http.post(url,this.selectedTask)
+        this.http.post(url,{task:this.selectedTask,
+                            username:this.username})
         .subscribe(
             (data) => {
                 // console.log(data)
@@ -130,7 +141,8 @@ export class MainComponent {
             this.selectedTask.color = "red"
         }
 
-        this.http.post(url,this.selectedTask)
+        this.http.post(url,{task:this.selectedTask,
+                            username:this.username})
         .subscribe(
             (data) => {
                 // console.log(data)

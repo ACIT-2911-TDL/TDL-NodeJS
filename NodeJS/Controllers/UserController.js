@@ -1,6 +1,4 @@
 const User           = require('../Models/User');
-var   passport       = require('passport');
-const RequestService = require('../Services/RequestService');
 const UserRepo       = require('../Data/UserRepo');
 const _userRepo      = new UserRepo();
 
@@ -19,7 +17,6 @@ exports.RegisterUser  = async function(req, res){
             lastName:     req.body.lastName,
             email:        req.body.email,
             username:     req.body.username,
-            role:         '',
         });
        
         // Uses passport to register the user.
@@ -32,10 +29,10 @@ exports.RegisterUser  = async function(req, res){
                         return res.json( 
                         { user : newUser, errorMessage: err });
                     }
-                    // User registered so authenticate and redirect to secure 
-                    // area.
-                    passport.authenticate('local') (req, res, 
-                            function () { res.json( {errorMessage:{message:"" }}) });
+                    else {
+                        return res.json(
+                        { user : newUser, errorMessage: {message:""} });
+                    }
                 });
 
     }

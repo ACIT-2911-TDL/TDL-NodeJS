@@ -15,14 +15,18 @@ export class AppComponent {
     role: string = "";
     username: string = "";
     auth_token: string = "";
-
     _apiService: ApiService;
     public site = 'http://localhost:1337/';
 
 
     constructor(private http: HttpClient, private router: Router) {
         this._apiService = new ApiService(http, this);
-        this.router.navigateByUrl('/main');
+        if(this.auth_token=="") {
+            this.router.navigateByUrl('/login');
+        }
+        else{
+            this.router.navigateByUrl('/main');
+        }
 
     }
 

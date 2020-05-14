@@ -7,6 +7,8 @@ var engine        = require('ejs-locals');
 var bodyParser    = require('body-parser');
 var LocalStrategy = require('passport-local').Strategy;
 const DB_URI      = 'mongodb://localhost:27017/testdb';
+// const DB_URI      = "mongodb+srv://dbUser:P@ssw0rd@cluster0-tycp2.mongodb.net/test?retryWrites=true&w=majority"
+
 let options       = { useNewUrlParser: true  };
 mongoose.connect(DB_URI, options);
 
@@ -25,21 +27,7 @@ app.use(function (req, res, next) {
 app.use(express.urlencoded({ extended: true }));;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge:60000 },
-  store: new (require('express-sessions'))({
-    storage: 'mongodb',
-    instance: mongoose,     // optional
-    host: 'localhost',      // optional
-    port: 27017,            // optional
-    db: 'testdb',           // optional
-    collection: 'sessions', // optional
-  })
 
-}));
 
 app.use(passport.initialize());
 app.use(passport.session());

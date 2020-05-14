@@ -4,8 +4,8 @@ class UserRepo {
     UserRepo() {        
     }
 
-    async getUserByEmail(email) {
-        var user = await User.findOne({email: email});
+    async getUserByName(username) {
+        var user = await User.findOne({username:username});
         if(user) {
             let respose = { obj: user, errorMessage:"" }
             return respose;
@@ -15,15 +15,7 @@ class UserRepo {
         }
     }
 
-    async getRolesByUsername(username) {
-        var user = await User.findOne({username: username}, {_id:0, roles:1});
-        if(user.roles) {
-            return user.roles;
-        }
-        else {
-            return [];
-        }
-    }    
+   
 }
 module.exports = UserRepo;
 

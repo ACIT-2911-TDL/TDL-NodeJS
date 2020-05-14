@@ -22,7 +22,8 @@ var userSchema = mongoose.Schema({
   lastName: {
       type: String,
       required: true
-  }
+  },
+
 });
 userSchema.plugin(passportLocalMongoose);
 var User = module.exports = mongoose.model('User', userSchema, 'users');

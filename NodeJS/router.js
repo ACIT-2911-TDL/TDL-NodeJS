@@ -19,8 +19,8 @@ module.exports = function(app){
         authMiddleware.signJWTForUser
         );
 
-    app.get('/toDoTasks', cors(), HomeController.toDoTasks);
-    app.get('/doneTasks', cors(), HomeController.doneTasks);
+    app.post('/toDoTasks', cors(), HomeController.toDoTasks);
+    app.post('/doneTasks', cors(), HomeController.doneTasks);
     app.post('/newTask', cors(), TaskController.CreateNewTask);
     app.post('/deleteTask', cors(), TaskController.Delete);
 

@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td>Email: </td>
-        <td><input [(ngModel)]="email" type="text" required></td>
+        <td><input [(ngModel)]="email" type="text" required email></td>
     </tr>
     <tr>
         <td>Password:</td>
@@ -28,4 +28,6 @@
         <td> <input type="submit" value="Register" (click)="register()"></td>
     </tr>
 </table>
-{{_errorMessage}}
+
+
+{{errorMessage}}
