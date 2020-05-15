@@ -32,29 +32,24 @@ exports.Delete = async function (req, res) {
     let taskID =  req.body.task._id;
     let username = req.body.username;
     let deleteTask = await _taskRepo.delete(taskID);
-    let allTasks = await _taskRepo.allTasks(username);
 
-    res.json({ allTasks: allTasks })
+    res.json({ message:"task deleted" })
 
 }
 
 exports.Complete = async function (req, res) {
     let taskID =  req.body.task._id;
-    let username = req.body.username;
     let updating = {complete: true};
     let completeTask = await _taskRepo.update(taskID, updating);
-    let allTasks = await _taskRepo.allTasks(username);
-    res.json({ allTasks: allTasks })
+    res.json({ message:"task completed" })
 
 }
 
 exports.Highlight = async function (req, res) {
     let taskID =  req.body.task._id;
-    let username = req.body.username;
     let updating = {color: "red"};
     let highlightTask = await _taskRepo.update(taskID, updating);
-    let allTasks = await _taskRepo.allTasks(username);
-    res.json({ allTasks: allTasks })
+    res.json({ message:"task marked" })
 
 }
 

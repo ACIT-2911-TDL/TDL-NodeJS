@@ -35,6 +35,10 @@ class TaskRepo {
         return newTask;
     }
 
+    async getTaskbyUser(username) {
+        let selectedTask = await Task.findOne({user:username}).exec();
+        return selectedTask
+    } 
 
     async allTasks(username) {
         let userTasks = [];
