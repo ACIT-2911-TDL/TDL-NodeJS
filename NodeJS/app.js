@@ -6,8 +6,8 @@ var path          = require('path');
 var engine        = require('ejs-locals');
 var bodyParser    = require('body-parser');
 var LocalStrategy = require('passport-local').Strategy;
-const DB_URI      = 'mongodb://localhost:27017/testdb';
-// const DB_URI      = "mongodb+srv://dbUser:P@ssw0rd@cluster0-tycp2.mongodb.net/test?retryWrites=true&w=majority"
+// const DB_URI      = 'mongodb://localhost:27017/testdb';
+const DB_URI      = "mongodb+srv://dbUser:P@ssw0rd@cluster0-tycp2.mongodb.net/test?retryWrites=true&w=majority"
 
 let options       = { useNewUrlParser: true  };
 mongoose.connect(DB_URI, options);
