@@ -8,4 +8,4 @@ install:
   - cd NodeJS && npm install
 
 script:
-  - cd NodeJS/tests && npm test
+  - cd tests && npm test
