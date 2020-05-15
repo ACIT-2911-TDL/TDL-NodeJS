@@ -4,4 +4,8 @@ node_js:
 - '6'
 - '4'
 
-script: ./NodeJS/tests/test.js
+install:
+  - cd NodeJS && npm install
+
+script:
+  - cd NodeJS/tests && npm test
