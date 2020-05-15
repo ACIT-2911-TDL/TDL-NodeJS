@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
     <tr>
         <td>User Name: </td>
         <td><input [(ngModel)]="username" type="text" required></td>
@@ -27,7 +27,52 @@
         <td></td>
         <td> <input type="submit" value="Register" (click)="register()"></td>
     </tr>
+</table> -->
+
+
+
+
+<table role="form" style="width:350px">
+        <div class="form-group">
+                <input type="username" name="username" class="form-control input-sm" 
+                placeholder="Username" [(ngModel)]="username"> 
+            </div>
+
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="text" name="first_name" class="form-control input-sm"
+                    placeholder="First Name" [(ngModel)]="firstName">
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="text" name="last_name"  class="form-control input-sm"
+                    placeholder="Last Name" [(ngModel)]="lastName">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+            <input type="email" name="email"  class="form-control input-sm" placeholder="Email Address" [(ngModel)]="email">
+        </div>
+    
+
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="password" name="password" class="form-control input-sm"
+                    placeholder="Password" [(ngModel)]="password">
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="password" name="password_confirmation"
+                    class="form-control input-sm" placeholder="Confirm Password" [(ngModel)]="passwordConfirm">
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Register" class="btn btn-info btn-block" (click)="register()">
 </table>
 
-
-{{errorMessage}}
+<h4>{{errorMessage}}</h4>

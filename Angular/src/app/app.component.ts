@@ -21,6 +21,7 @@ export class AppComponent {
 
     constructor(private http: HttpClient, private router: Router) {
         this._apiService = new ApiService(http, this);
+        this.updateLinks();
         if(this.auth_token=="") {
             this.router.navigateByUrl('/login');
         }

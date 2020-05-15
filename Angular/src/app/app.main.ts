@@ -133,7 +133,7 @@ export class MainComponent {
     }
 
     markTask() {
-        let url = "http://127.0.0.1:5000/markTask";
+        let url = "http://localhost:1337/markTask";
         if(this.selectedTask.color == "red") {
             this.selectedTask.color = null;
         }
