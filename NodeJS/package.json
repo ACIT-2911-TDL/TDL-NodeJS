@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha tests/*.js --timeout 10000 --reporter list"
+    "test": "mocha tests/*.js --timeout 30000 --reporter list"
   },
   "author": "",
   "license": "ISC",
