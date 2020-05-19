@@ -209,7 +209,7 @@
     <li *ngFor="let task of _doneTasksArray" (click)="onSelect(task)">
 
         <p><span>Task Name</span>: {{task.name}}</p>
-        <p><span>Completion Date</span>: {{task.deadline | date:"yyyy-MM-LL HH:mm"}}</p>
+        <p><span>Completion Date</span>: {{task.complete | date:"yyyy-MM-LL HH:mm"}}</p>
         <div *ngIf="selectedTask===task">
             <p><span>Description: </span> {{selectedTask.description}}</p>
         </div>
