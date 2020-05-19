@@ -15,8 +15,7 @@ var taskSchema = mongoose.Schema({
         required: true
     },
     complete: {
-        type: Boolean,
-        required: true
+        type: Date,
     },
     color: {
         type: String,
