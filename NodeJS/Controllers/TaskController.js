@@ -11,7 +11,7 @@ exports.CreateNewTask = async function (req, res) {
         'deadline': req.body.deadline,
         'description': req.body.description,
         'complete': null,
-        'color': null,
+        'color': "regular",
         'user': req.body.username
     })
     let responseObj = await _taskRepo.create(tempTaskObj);    
@@ -49,7 +49,8 @@ exports.Complete = async function (req, res) {
 
 exports.Highlight = async function (req, res) {
     let taskID =  req.body.task._id;
-    let updating = {color: "red"};
+    let color  =  req.body.task.color;
+    let updating = {color: color};
     let highlightTask = await _taskRepo.update(taskID, updating);
     res.json({ message:"task marked" })
 

@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha tests/*.js --timeout 30000 --reporter list --exit"
+    "test": "mocha tests/*.js --timeout 30000 --reporter list --exit",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
